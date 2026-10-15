@@ -289,6 +289,7 @@ body{font-family:var(--font);background:#f0f4f8;min-height:100vh;overflow-x:hidd
     <div class="sync-info" id="syncSt">—</div>
     <div class="hdiv"></div>
     <button class="btn-home" onclick="screenAc('sParam')" style="color:var(--p2);border-color:var(--p3)">⚙️ Parametrlər</button>
+    <button class="btn-home" onclick="screenAc('sHaqqinda')" style="color:#374151">ℹ️ Proqram haqqında</button>
   </div>
 </div>
 
@@ -564,6 +565,32 @@ body{font-family:var(--font);background:#f0f4f8;min-height:100vh;overflow-x:hidd
 
 <!-- ══ MODALLAR ══ -->
 <!-- Mal seçim modali -->
+<div class="screen" id="sHaqqinda">
+  <div class="topbar param-bg">
+    <button class="btn-geri" onclick="screenAc('sHome')">‹</button>
+    <div class="topbar-mid"><div class="topbar-title">Proqram haqqında</div><div class="topbar-sub">Anbar Terminal</div></div>
+  </div>
+  <div style="padding:14px;display:flex;flex-direction:column;gap:12px;overflow:auto">
+    <div style="background:#fff;border:1px solid #d1d5db;border-radius:12px;overflow:hidden">
+      <div style="padding:12px 14px;border-bottom:1px solid #e5e7eb">
+        <div style="font-size:11px;font-weight:700;color:#6b7280">TƏRTİBATÇI</div>
+        <div style="font-size:15px;font-weight:700;margin-top:2px">Şıxalıyev Xəyal</div>
+      </div>
+      <div style="padding:12px 14px;border-bottom:1px solid #e5e7eb">
+        <div style="font-size:11px;font-weight:700;color:#6b7280">LİSENZİYA</div>
+        <div style="font-size:14px;font-weight:600;margin-top:2px">Müəllifə məxsusdur (Bütün hüquqlar qorunur)</div>
+      </div>
+      <div style="padding:12px 14px">
+        <div style="font-size:11px;font-weight:700;color:#6b7280">ƏLAQƏ</div>
+        <a href="tel:+994516782878" style="display:inline-block;font-size:15px;font-weight:700;margin-top:2px;color:var(--b3);text-decoration:none">+994 51 678 28 78</a>
+      </div>
+    </div>
+    <div style="background:#fffbeb;border:1px solid #fcd34d;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.5;color:#78350f">
+      <b>QEYD:</b> Bu proqram təminatı və onun tərkib hissələri müəllif hüquqları ilə qorunur. İzinsiz nüsxələnməsi və ya paylanması qadağandır.
+    </div>
+  </div>
+</div>
+
 <div class="modal-bg" id="mMalSec" style="display:none" onclick="if(event.target===this)modalBagla('mMalSec')">
   <div class="modal-box">
     <div class="modal-hdr">
@@ -1700,6 +1727,21 @@ async function kamBagla(){
   document.getElementById('kamBox').style.display='none';
 }
 async function kamFener(){try{_fen=!_fen;await _kam.applyVideoConstraints({advanced:[{torch:_fen}]})}catch(e){_fen=false;toast('Fənər dəstəklənmir','warn')}}
+
+var _bkT=0;
+function geriBas(){
+  var kb=document.getElementById('kamBox');
+  if(kb&&kb.style.display==='flex'){kamBagla();return;}
+  var ms=document.querySelectorAll('.modal-bg');
+  for(var i=0;i<ms.length;i++){if(getComputedStyle(ms[i]).display!=='none'){modalBagla(ms[i].id);return;}}
+  var sc=document.querySelector('.screen.active'),id=sc?sc.id:'sHome';
+  if(id==='sOp'){geriQayt();return;}
+  if(id!=='sHome'){screenAc('sHome');return;}
+  var n=Date.now(),A=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;
+  if(n-_bkT<2000){if(A&&A.exitApp)A.exitApp();return;}
+  _bkT=n;toast('Çıxmaq üçün bir də geri basın','info');
+}
+(function(){var A=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;if(A&&A.addListener)A.addListener('backButton',geriBas);})();
 
 restoreBackup().then(function(){modUI();init()},function(){modUI();init()});
 </script>
