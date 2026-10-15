@@ -1,0 +1,7 @@
+{
+  "appId": "az.barkodpro.anbar",
+  "appName": "Anbar Terminal",
+  "webDir": "www",
+  "server": { "androidScheme": "http", "cleartext": true },
+  "plugins": { "CapacitorHttp": { "enabled": true } }
+}
