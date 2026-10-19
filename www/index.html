@@ -735,7 +735,7 @@ function mallarHtml(a){if(!a||!a.length)return '';var h='<div style="font-size:1
 var _ac;
 function beep(ok){try{if(navigator.vibrate)navigator.vibrate(ok?40:[80,60,80]);var A=window.AudioContext||window.webkitAudioContext;if(!A)return;_ac=_ac||new A();var o=_ac.createOscillator(),g=_ac.createGain();o.frequency.value=ok?1400:300;g.gain.value=.08;o.connect(g);g.connect(_ac.destination);o.start();o.stop(_ac.currentTime+(ok?.08:.25))}catch(e){}}
 
-var CFG=Object.assign({apiUrl:'http://192.168.0.0/Baza adı/hs/Http servis',apiUser:'',apiPass:'',anbarAd:'Anbar-1'},lj('anbar_cfg',{}));
+var CFG=Object.assign({apiUrl:'http://192.168.0.0/Baza adı/hs/Http servisi',apiUser:'',apiPass:'',anbarAd:'Anbar-1'},lj('anbar_cfg',{}));
 
 CFG.mode=CFG.mode||'online';
 function apiBuild(){CFG.apiUrl=(CFG.sxema||'http')+'://'+CFG.srv+'/'+CFG.baza+'/hs/'+CFG.servis}
@@ -1114,7 +1114,7 @@ function showNew(b){
 }
 
 function showNFW(b){
-  var nm={qaytarma:'Mal Qaytarma',sayim:'Mal Sayımı'};
+  var nm={qaytarma:'Mal Qaytarma',sayim:'Mal Sayımı',silinme:'Mal Silinməsi',satis:'Mal Satışı'};
   document.getElementById('nfwBc').textContent=b;
   document.getElementById('nfwSub').textContent=(nm[curOp]||'')+' əməliyyatında yeni mal olmaz';
   document.getElementById('nfWarn').style.display='block';
@@ -1657,12 +1657,12 @@ function opGiris(op){
 }
 
 function qaimeListYukle(){
-  var op=curGirisOp,adlar={qebul:'Mal Qəbulu',qaytarma:'Mal Qaytarma',sayim:'Mal Sayımı'};
+  var op=curGirisOp,adlar={qebul:'Mal Qəbulu',qaytarma:'Mal Qaytarma',sayim:'Mal Sayımı',silinme:'Mal Silinməsi',satis:'Mal Satışı'};
   var T=document.getElementById('qaimeListTitle');if(T)T.textContent=adlar[op];
   var sub=document.getElementById('qaimeListSub');if(sub)sub.textContent='Göndərilməmiş qaimələr';
-  var tb=document.querySelector('#sQaimeList .topbar');if(tb)tb.className='topbar '+op+'-bg';
+  var tb=document.querySelector('#sQaimeList .topbar');if(tb)tb.className='topbar '+(OPS[op]&&OPS[op].tc||'qebul-bg');
   var yb=document.getElementById('btnYeniQaime');
-  if(yb)yb.style.background={qebul:'var(--g2)',qaytarma:'var(--r2)',sayim:'var(--b3)'}[op];
+  if(yb)yb.style.background={qebul:'var(--g2)',qaytarma:'var(--r2)',sayim:'var(--b3)',silinme:'var(--r2)',satis:'var(--g2)'}[op];
   var list=lj('anbar_drafts',[]).filter(function(d){return d.op===op;}).map(function(d){d.draft=true;return d;})
     .concat(lj('anbar_outbox',[]).filter(function(d){return d.op===op;}).map(function(d){d.offline=true;d.draft=false;return d;}));
   var cnt=document.getElementById('qaimeListCnt');if(cnt)cnt.textContent=list.length;
