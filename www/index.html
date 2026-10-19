@@ -248,6 +248,25 @@ body{font-family:var(--font);background:#f0f4f8;min-height:100vh;overflow-x:hidd
 @supports(height:100dvh){.modal-box{height:100dvh;max-height:100dvh}}
 </style>
 <script src="html5-qrcode.min.js"></script>
+<style>
+#sHome,#sParam,#sMexfilik{background:#f1f5f9}
+.n-hd{background:#0f172a;padding:20px 16px;display:flex;justify-content:space-between;align-items:center}.n-t{font-size:20px;font-weight:800;color:#fff}.n-s{font-size:12.5px;color:#94a3b8;margin-top:2px}
+.n-pill{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;background:#1e293b;color:#cbd5e1}.n-pill i{width:8px;height:8px;border-radius:50%;background:#94a3b8}
+.n-pill.ok{background:#052e16;color:#4ade80}.n-pill.ok i{background:#4ade80}.n-pill.warn{background:#422006;color:#fbbf24}.n-pill.warn i{background:#fbbf24}.n-pill.bad{background:#450a0a;color:#f87171}.n-pill.bad i{background:#f87171}
+.n-body{padding:0 16px 24px;display:flex;flex-direction:column;gap:8px}.n-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.n-st{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:12px}.n-st b{display:block;font-size:22px;font-weight:800;color:#0f172a}.n-st span{font-size:11.5px;color:#64748b}
+.n-lbl{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin:14px 0 0}
+.n-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.n-tile{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:14px;min-height:92px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px;cursor:pointer}
+.n-ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center}.n-tt{font-size:15px;font-weight:700;color:#0f172a}.n-td{font-size:12px;color:#64748b;margin-top:2px}
+.n-foot{text-align:center;font-size:12px;color:#64748b;margin-top:14px;line-height:1.5}
+.n-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden}.n-f{padding:10px 14px;border-top:1px solid #f1f5f9}.n-card>.n-f:first-child{border-top:0}
+.n-f label{display:block;font-size:11.5px;font-weight:600;color:#64748b;margin-bottom:4px}.n-in{width:100%;box-sizing:border-box;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;font-size:15px;color:#0f172a;background:#f8fafc}
+.n-url{font-size:12px;color:#15803d;font-weight:600;word-break:break-all;margin-bottom:10px}
+.n-btn{width:100%;min-height:44px;border-radius:12px;border:1px solid #cbd5e1;background:#fff;color:#0f172a;font-size:14px;font-weight:700}
+.n-row{display:flex;width:100%;justify-content:space-between;align-items:center;border:0;border-top:1px solid #f1f5f9;background:#fff;padding:14px;font-size:14px;font-weight:600;color:#0f172a;text-align:left}.n-row:first-child{border-top:0}.n-row span{color:#94a3b8}
+.n-sw{position:relative;flex:none;width:44px;height:26px;border:0;border-radius:999px;background:#cbd5e1;padding:0}.n-sw.on{background:#1d4ed8}.n-sw::after{content:"";position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .15s}.n-sw.on::after{left:20px}
+.n-stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.n-seg{display:flex;gap:4px;background:#e2e8f0;border-radius:12px;padding:4px}.n-seg button{flex:1;border:0;border-radius:9px;padding:9px 0;font-size:13px;font-weight:700;color:#475569;background:transparent}.n-seg button.on{background:#1d4ed8;color:#fff}.n-lab2{display:block;font-size:11.5px;font-weight:600;color:#64748b;margin-bottom:4px}.n-tb{width:100%;border-collapse:collapse;font-size:13px}.n-tb th,.n-tb td{padding:8px 10px;border-bottom:1px solid #f1f5f9;text-align:left}.n-tb th{background:#f8fafc;color:#64748b;font-size:11.5px}#hesTar{display:flex}
+</style>
 </head>
 <body>
 <div class="app">
@@ -255,41 +274,21 @@ body{font-family:var(--font);background:#f0f4f8;min-height:100vh;overflow-x:hidd
 
 <!-- ══ ANA EKRAN ══ -->
 <div class="screen active" id="sHome">
-  <div class="home-header">
-    <div class="home-logo">🏭</div>
-    <div class="home-title">Anbar Terminal</div>
-    <div class="home-sub" id="homeSub">Mal bazası yüklənməyib</div>
-  </div>
-  <div class="home-body">
-    <div class="home-lbl">Əməliyyat seçin</div>
-    <div class="op-card qebul" onclick="qebulGiris()">
-      <div class="op-icon">📦</div>
-      <div class="op-info"><div class="op-title">Mal Qəbulu</div><div class="op-desc">Anbara daxil olan malları qeydə alın</div><span class="op-badge ok">✚ Yeni mal + Tədarükçü seçimi</span></div>
-      <span style="color:#ccc;font-size:22px">›</span>
-    </div>
-    <div class="op-card qaytarma" onclick="opGiris('qaytarma')">
-      <div class="op-icon">↩️</div>
-      <div class="op-info"><div class="op-title">Mal Qaytarma</div><div class="op-desc">Qaytarılan malları siyahıya alın</div><span class="op-badge no">🔒 Yalnız mövcud mallar</span></div>
-      <span style="color:#ccc;font-size:22px">›</span>
-    </div>
-    <div class="op-card sayim" onclick="opGiris('sayim')">
-      <div class="op-icon">📋</div>
-      <div class="op-info"><div class="op-title">Mal Sayımı</div><div class="op-desc">İnventarizasiya — qrup seçimi ilə</div><span class="op-badge no">📂 Qruplar + 0-dan başla</span></div>
-      <span style="color:#ccc;font-size:22px">›</span>
-    </div>
-    <div class="op-card tarix" onclick="screenAc('sTarix')">
-      <div class="op-icon">📜</div>
-      <div class="op-info"><div class="op-title">Qaimə Tarixçəsi</div><div class="op-desc">Əvvəlki əməliyyatları görün</div></div>
-      <span style="color:#ccc;font-size:22px">›</span>
-    </div>
+  <div class="n-hd"><div><div class="n-t">Anbar Terminal</div><div class="n-s" id="homeSub">Mal bazası yüklənməyib</div></div><div class="n-pill" id="durPill"><i></i><span>Yoxlanılır</span></div></div>
+  <div class="n-body">
+    <div class="n-stats3"><div class="n-st"><b id="stGoz">0</b><span data-i="Gözləyən sənəd">Gözləyən sənəd</span></div><div class="n-st"><b id="stBug">0</b><span data-i="Bu gün sənəd">Bu gün sənəd</span></div><div class="n-st"><b id="stMal">0</b><span data-i="Mal sayı">Mal sayı</span></div></div>
+    <div class="n-lbl" data-i="Anbar əməliyyatları">Anbar əməliyyatları</div>
+    <div class="n-grid"><div class="n-tile" onclick="qebulGiris()"><div class="n-ic" style="background:#eff6ff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg></div><div><div class="n-tt" data-i="Mal qəbulu">Mal qəbulu</div><div class="n-td" data-i="Təchizatçıdan daxil olan">Təchizatçıdan daxil olan</div></div></div><div class="n-tile" onclick="opGiris('qaytarma')"><div class="n-ic" style="background:#eff6ff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3m0 0L8 7m4-4l4 4M4 20h16"/></svg></div><div><div class="n-tt" data-i="Mal qaytarma">Mal qaytarma</div><div class="n-td" data-i="Təchizatçıya qaytarılan">Təchizatçıya qaytarılan</div></div></div><div class="n-tile" onclick="opGiris('sayim')"><div class="n-ic" style="background:#eff6ff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg></div><div><div class="n-tt" data-i="Mal sayımı">Mal sayımı</div><div class="n-td" data-i="Qrup üzrə inventarizasiya">Qrup üzrə inventarizasiya</div></div></div><div class="n-tile" onclick="opGiris('silinme')"><div class="n-ic" style="background:#eff6ff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></div><div><div class="n-tt" data-i="Mal silinməsi">Mal silinməsi</div><div class="n-td" data-i="Zədəli, vaxtı keçmiş">Zədəli, vaxtı keçmiş</div></div></div><div class="n-tile" onclick="opGiris('satis')"><div class="n-ic" style="background:#eff6ff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2 11h10l2-8H7M9 20h.01M17 20h.01"/></svg></div><div><div class="n-tt" data-i="Mal satışı">Mal satışı</div><div class="n-td" data-i="Qiymət və qalıq ilə">Qiymət və qalıq ilə</div></div></div><div class="n-tile" onclick="screenAc('sTarix')"><div class="n-ic" style="background:#f1f5f9"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5l3 2M21 12a9 9 0 11-3-6.7L21 8M21 3v5h-5"/></svg></div><div><div class="n-tt" data-i="Qaimə tarixçəsi">Qaimə tarixçəsi</div><div class="n-td" data-i="Əvvəlki əməliyyatlar">Əvvəlki əməliyyatlar</div></div></div></div>
+    <div id="secOd"><div class="n-lbl" data-i="Ödənişlər">Ödənişlər</div><div class="n-grid"><div class="n-tile" onclick="kassaAc('kassa_medaxil')"><div class="n-ic" style="background:#f0fdf4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></div><div><div class="n-tt" data-i="Kassa mədaxil">Kassa mədaxil</div><div class="n-td" data-i="Daxil olan pul">Daxil olan pul</div></div></div><div class="n-tile" onclick="kassaAc('kassa_mexaric')"><div class="n-ic" style="background:#f0fdf4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg></div><div><div class="n-tt" data-i="Kassa məxaric">Kassa məxaric</div><div class="n-td" data-i="Çıxan pul">Çıxan pul</div></div></div></div></div>
+    <div id="secHes"><div class="n-lbl" data-i="Hesabatlar">Hesabatlar</div><div class="n-card"><button class="n-row" onclick="hesabatAc('qaliq','Anbar qalığı')"><span style="display:flex;align-items:center;gap:10px;color:#0f172a"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span data-i="Anbar qalığı">Anbar qalığı</span></span><span>›</span></button><button class="n-row" onclick="hesabatAc('borc','Kontragent borcları')"><span style="display:flex;align-items:center;gap:10px;color:#0f172a"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span data-i="Kontragent borcları">Kontragent borcları</span></span><span>›</span></button><button class="n-row" onclick="hesabatAc('satis','Satış hesabatı')"><span style="display:flex;align-items:center;gap:10px;color:#0f172a"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span data-i="Satış hesabatı">Satış hesabatı</span></span><span>›</span></button><button class="n-row" onclick="hesabatAc('kassa','Kassa hesabatı')"><span style="display:flex;align-items:center;gap:10px;color:#0f172a"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span data-i="Kassa hesabatı">Kassa hesabatı</span></span><span>›</span></button></div></div>
+    <div class="n-lbl" data-i="Rejim və mal bazası">Rejim və mal bazası</div>
     <button class="btn-home" id="modBtn" onclick="modDeyis()"></button>
     <button class="btn-home" id="pendBtn" onclick="outboxGonder()" style="display:none;color:var(--a1);border-color:var(--a3);background:var(--a4)"></button>
-    <div class="hdiv"></div>
-    <button class="btn-home" onclick="loadMallar()">🔄 Mal bazasını yüklə / yenilə</button>
+    <button class="btn-home" onclick="loadMallar()" data-i="🔄 Mal bazasını 1C-dən yüklə" style="">🔄 Mal bazasını 1C-dən yüklə</button><button class="btn-home" onclick="malFaylYukle()" data-i="📄 Mal faylından yüklə (CSV)" style="">📄 Mal faylından yüklə (CSV)</button>
     <div class="sync-info" id="syncSt">—</div>
-    <div class="hdiv"></div>
-    <button class="btn-home" onclick="screenAc('sParam')" style="color:var(--p2);border-color:var(--p3)">⚙️ Parametrlər</button>
-    <button class="btn-home" onclick="screenAc('sHaqqinda')" style="color:#374151">ℹ️ Proqram haqqında</button>
+    <div class="n-lbl" data-i="Digər">Digər</div>
+    <button class="btn-home" onclick="screenAc('sParam')" data-i="⚙️ Ayarlar" style="color:var(--p2);border-color:var(--p3)">⚙️ Ayarlar</button><button class="btn-home" onclick="jurnalGor()" data-i="📋 Sinxronizasiya jurnalı" style="color:#374151">📋 Sinxronizasiya jurnalı</button><button class="btn-home" onclick="diagGor()" data-i="🩺 Diaqnostika" style="color:#374151">🩺 Diaqnostika</button><button class="btn-home" onclick="screenAc('sHaqqinda')" data-i="ℹ️ Proqram haqqında" style="color:#374151">ℹ️ Proqram haqqında</button><button class="btn-home" onclick="screenAc('sMexfilik')" data-i="🔒 Məxfilik siyasəti" style="color:#374151">🔒 Məxfilik siyasəti</button>
+    <div class="n-foot">Anbar Terminal v3.2<br><span data-i="Bütün hüquqlar Xəyal Şıxalıyev BarkodPRO-ya məxsusdur.">Bütün hüquqlar Xəyal Şıxalıyev BarkodPRO-ya məxsusdur.</span></div>
   </div>
 </div>
 
@@ -531,36 +530,59 @@ body{font-family:var(--font);background:#f0f4f8;min-height:100vh;overflow-x:hidd
 
 <!-- ══ PARAMETRLƏR ══ -->
 <div class="screen" id="sParam">
-  <div class="topbar param-bg">
-    <button class="btn-geri" onclick="screenAc('sHome')">‹</button>
-    <div class="topbar-mid"><div class="topbar-title">Parametrlər</div><div class="topbar-sub">Bağlantı tənzimləmələri</div></div>
+  <div class="n-hd"><div style="display:flex;align-items:center;gap:10px"><button class="btn-geri" onclick="screenAc('sHome')">‹</button><div><div class="n-t" data-i="Ayarlar">Ayarlar</div><div class="n-s" data-i="Bağlantı, fayl və ehtiyat">Bağlantı, fayl və ehtiyat</div></div></div></div>
+  <div class="n-body" style="overflow:auto;padding-bottom:40px">
+    <div class="n-lbl" data-i="Bağlantı">Bağlantı</div><div class="n-card"><div class="n-f"><label for="cfgSrv" data-i="Server ünvanı">Server ünvanı</label><input class="n-in" id="cfgSrv" type="text" placeholder="192.168.1.150" oninput="cfgSaxla()" autocomplete="off"></div><div class="n-f"><label for="cfgBaza" data-i="Baza adı">Baza adı</label><input class="n-in" id="cfgBaza" type="text" placeholder="barkodprodatabase" oninput="cfgSaxla()" autocomplete="off"></div><div class="n-f"><label for="cfgServis" data-i="HTTP servis adı">HTTP servis adı</label><input class="n-in" id="cfgServis" type="text" placeholder="terminal" oninput="cfgSaxla()" autocomplete="off"></div><div class="n-f"><label for="cfgUser" data-i="1C istifadəçi adı">1C istifadəçi adı</label><input class="n-in" id="cfgUser" type="text" placeholder="boş burax" oninput="cfgSaxla()" autocomplete="off"></div><div class="n-f"><label for="cfgPass" data-i="1C parol">1C parol</label><input class="n-in" id="cfgPass" type="password" placeholder="boş burax" oninput="cfgSaxla()" autocomplete="off"></div><div class="n-f"><div id="cfgUrlGor" class="n-url"></div><button class="n-btn" onclick="durumYoxla(true)" data-i="🔌 Bağlantını yoxla">🔌 Bağlantını yoxla</button><div id="pingRes" style="text-align:center;font-size:13px;font-weight:600;min-height:18px;margin-top:8px"></div></div></div>
+    <div class="n-lbl" data-i="Giriş açarı">Giriş açarı</div><div class="n-card"><div class="n-f"><label for="cfgAcar" data-i="Giriş açarı">Giriş açarı</label><input class="n-in" id="cfgAcar" type="password" placeholder="boş = ödənişlər və hesabatlar gizli" oninput="cfgSaxla()" autocomplete="off"></div><div class="n-f" style="font-size:12px;color:#64748b" data-i="Ödənişlər və hesabatlar yalnız açar daxil ediləndə görünür">Ödənişlər və hesabatlar yalnız açar daxil ediləndə görünür</div></div>
+    <div class="n-lbl" data-i="Terminal">Terminal</div><div class="n-card"><div class="n-f"><label for="cfgTerm" data-i="Terminal adı">Terminal adı</label><input class="n-in" id="cfgTerm" type="text" placeholder="T1" oninput="cfgSaxla()" autocomplete="off"></div><div class="n-f"><label for="cfgAnbar" data-i="Anbar adı (1C-yə göndəriləcək)">Anbar adı (1C-yə göndəriləcək)</label><input class="n-in" id="cfgAnbar" type="text" placeholder="Anbar-1" oninput="cfgSaxla()" autocomplete="off"></div><div class="n-f"><button class="n-btn" onclick="kamAc('qr')" data-i="📷 QR ilə doldur">📷 QR ilə doldur</button></div></div>
+    <div class="n-lbl" data-i="Dil">Dil</div><div class="n-seg"><button type="button" data-k="dil" data-v="az" onclick="secim('dil','az')">AZ</button><button type="button" data-k="dil" data-v="ru" onclick="secim('dil','ru')">RU</button><button type="button" data-k="dil" data-v="tr" onclick="secim('dil','tr')">TR</button><button type="button" data-k="dil" data-v="en" onclick="secim('dil','en')">EN</button></div>
+    <div class="n-lbl" data-i="Cihaz">Cihaz</div><div class="n-card"><div class="n-f" style="display:flex;align-items:center;gap:12px"><div style="flex:1"><div style="font-size:14px;font-weight:600;color:#0f172a" data-i="Ekran sönməsin">Ekran sönməsin</div></div><button type="button" id="sw_ekran" class="n-sw" role="switch" aria-label="Ekran sönməsin" onclick="tgl('ekran')"></button></div><div class="n-f" style="display:flex;align-items:center;gap:12px"><div style="flex:1"><div style="font-size:14px;font-weight:600;color:#0f172a" data-i="Batareya xəbərdarlığı">Batareya xəbərdarlığı</div></div><button type="button" id="sw_bat" class="n-sw" role="switch" aria-label="Batareya xəbərdarlığı" onclick="tgl('bat')"></button></div><div class="n-f" style="display:flex;align-items:center;gap:12px"><div style="flex:1"><div style="font-size:14px;font-weight:600;color:#0f172a" data-i="Avtomatik ehtiyat nüsxə">Avtomatik ehtiyat nüsxə</div></div><button type="button" id="sw_ehtiyat" class="n-sw" role="switch" aria-label="Avtomatik ehtiyat nüsxə" onclick="tgl('ehtiyat')"></button></div><div class="n-f" style="display:flex;align-items:center;gap:12px"><div style="flex:1;font-size:14px;font-weight:600;color:#0f172a" data-i="Yan skan düyməsi">Yan skan düyməsi</div><button class="n-btn" style="width:auto;padding:0 14px" onclick="yanOgren()" data-i="Düyməni öyrət">Düyməni öyrət</button></div></div>
+    <div class="n-lbl" data-i="Eyni mal təkrar oxunanda">Eyni mal təkrar oxunanda</div><div class="n-seg"><button type="button" data-k="dubl" data-v="artir" onclick="secim('dubl','artir')" data-i="Sayı artır">Sayı artır</button><button type="button" data-k="dubl" data-v="sorus" onclick="secim('dubl','sorus')" data-i="Soruş">Soruş</button><button type="button" data-k="dubl" data-v="xeber" onclick="secim('dubl','xeber')" data-i="Xəbərdarlıq">Xəbərdarlıq</button></div>
+    <div class="n-lbl" data-i="PIN kod (4 rəqəm, boş = söndür)">PIN kod (4 rəqəm, boş = söndür)</div><div class="n-card"><div class="n-f"><label for="cfgPin" data-i="PIN kod (4 rəqəm, boş = söndür)">PIN kod (4 rəqəm, boş = söndür)</label><input class="n-in" id="cfgPin" type="password" placeholder="••••" oninput="" autocomplete="off"></div><div class="n-f"><button class="n-btn" onclick="pinQur()" data-i="Saxla">Saxla</button></div></div>
+    <div class="n-lbl" data-i="Fayl rejimi">Fayl rejimi</div><div class="n-card"><div class="n-f" style="display:flex;align-items:center;gap:12px"><div style="flex:1"><div style="font-size:14px;font-weight:600;color:#0f172a" data-i="Sənədləri fayl kimi göndər">Sənədləri fayl kimi göndər</div><div style="font-size:12px;color:#64748b;margin-top:2px">Terminal1CFilesBarkodPRO</div></div><button type="button" id="sw_fayl" class="n-sw" role="switch" aria-label="Sənədləri fayl kimi göndər" onclick="tgl('fayl')"></button></div></div>
+    <div class="n-lbl" data-i="Fayllar">Fayllar</div><div class="n-card"><div class="n-f" style="display:flex;flex-direction:column;gap:8px"><button class="n-btn" onclick="malFaylYukle()" data-i="📄 Mal faylını yüklə (CSV)">📄 Mal faylını yüklə (CSV)</button><button class="n-btn" onclick="ayarSaxla()" data-i="💾 Ayarları fayla saxla">💾 Ayarları fayla saxla</button><button class="n-btn" onclick="ayarYukle()" data-i="♻️ Ayarları geri yüklə">♻️ Ayarları geri yüklə</button><button class="n-btn" onclick="ehtiyatFayl()" data-i="🗂 Ehtiyat fayl yarat (gözləyən sənədlər)">🗂 Ehtiyat fayl yarat (gözləyən sənədlər)</button></div></div>
+    <input type="file" id="malFayl" accept=".csv,.txt,text/csv,text/plain" style="display:none" onchange="malFaylSec(this)">
+    <input type="file" id="ayarFayl" accept=".json,application/json" style="display:none" onchange="ayarSec(this)">
+    <div class="n-lbl" data-i="Digər">Digər</div><div class="n-card"><button class="n-row" onclick="screenAc('sHaqqinda')"><span data-i="ℹ️ Proqram haqqında">ℹ️ Proqram haqqında</span><span>›</span></button><button class="n-row" onclick="screenAc('sMexfilik')"><span data-i="🔒 Məxfilik siyasəti">🔒 Məxfilik siyasəti</span><span>›</span></button></div>
+    <div class="n-foot" data-i="Bütün hüquqlar Xəyal Şıxalıyev BarkodPRO-ya məxsusdur.">Bütün hüquqlar Xəyal Şıxalıyev BarkodPRO-ya məxsusdur.</div>
   </div>
-  <div style="padding:12px;display:flex;flex-direction:column;gap:10px;padding-bottom:40px;overflow:auto">
-    <div class="param-card">
-      <div class="param-card-hdr" style="background:#EEEDFE;color:var(--p1)">🔗 1C Bağlantı</div>
-      <div class="param-card-body">
-        <div class="param-fld"><label>API URL</label><input class="param-inp" id="cfgUrl" type="url" placeholder="http://192.168.1.100/baza/hs/v2" oninput="cfgSaxla()"></div>
-        <div class="param-grid">
-          <div class="param-fld"><label>İstifadəçi</label><input class="param-inp" id="cfgUser" type="text" placeholder="boş burax" oninput="cfgSaxla()"></div>
-          <div class="param-fld"><label>Parol</label><input class="param-inp" id="cfgPass" type="password" placeholder="boş burax" oninput="cfgSaxla()"></div>
-        </div>
-        <button class="btn-ping" onclick="pingEt()">🔌 Bağlantını yoxla</button>
-        <div id="pingRes" style="text-align:center;font-size:13px;font-weight:600;min-height:18px"></div>
-      </div>
-    </div>
-    <div class="param-card">
-      <div class="param-card-hdr" style="background:#f9fafb;color:#374151">🏭 Anbar məlumatı</div>
-      <div class="param-card-body">
-        <div class="param-fld"><label>Anbar adı (1C-yə göndəriləcək)</label><input class="param-inp" id="cfgAnbar" type="text" placeholder="Anbar-1" oninput="cfgSaxla()"></div>
-        <button class="btn-home" onclick="ehtiyatFayl()" style="margin-top:8px">💾 Ehtiyat fayl yarat (outbox + qaralamalar)</button>
-      </div>
-    </div>
-    <div style="background:#f9fafb;border-radius:10px;border:1px solid #e5e7eb;padding:12px;font-size:12px;color:#9ca3af;line-height:1.7">
-      <b style="color:#374151">URL nümunəsi:</b><br>
-      http://192.168.1.100/baza/hs/v2<br>
-      http://localhost/baza/hs/v2
-    </div>
-  </div>
+</div>
+
+<div class="screen" id="sMexfilik">
+  <div class="n-hd"><div style="display:flex;align-items:center;gap:10px"><button class="btn-geri" onclick="screenAc('sHome')">‹</button><div><div class="n-t">Məxfilik siyasəti</div><div class="n-s">Anbar Terminal</div></div></div></div>
+  <div class="n-body" style="overflow:auto;padding-bottom:40px"><div class="n-card" style="margin-top:14px;padding:14px;font-size:13.5px;line-height:1.6;color:#334155">
+    <p style="margin:0 0 10px">1. Terminal yalnız sizin ayarlarda göstərdiyiniz 1C serverə qoşulur və məlumatı yalnız ora göndərir.</p>
+    <p style="margin:0 0 10px">2. Cihazda ayarlar, mal siyahısı, gözləyən sənədlər və qaralamalar saxlanılır. Bu məlumat üçüncü tərəflə paylaşılmır.</p>
+    <p style="margin:0 0 10px">3. Tətbiq reklam, izləmə və analitika xidmətlərindən istifadə etmir.</p>
+    <p style="margin:0 0 10px">4. Kamera yalnız barkod oxumaq üçün istifadə olunur, şəkil saxlanmır.</p>
+    <p style="margin:0 0 10px">5. 1C istifadəçi adı və parolu yalnız bu cihazda saxlanılır. Cihaz itərsə, 1C-də həmin istifadəçinin parolunu dəyişin.</p>
+    <p style="margin:0 0 10px">6. Ayarlar fayla saxlananda parol faylın içinə yazılmır.</p>
+    <p style="margin:0"><b>Əlaqə:</b> Xəyal Şıxalıyev, +994 51 678 28 78<br>Bütün hüquqlar Xəyal Şıxalıyev BarkodPRO-ya məxsusdur.</p></div></div>
+</div>
+
+<div class="screen" id="sKassa">
+  <div class="n-hd"><div style="display:flex;align-items:center;gap:10px"><button class="btn-geri" onclick="screenAc('sHome')">‹</button><div><div class="n-t" data-i="Kassa mədaxil">Kassa mədaxil</div><div class="n-s" data-i="Ödənişlər">Ödənişlər</div></div></div></div>
+  <div class="n-body" style="overflow:auto"><div class="n-card" style="margin-top:14px"><div class="n-f"><label for="kMeb" data-i="Məbləğ">Məbləğ</label><input class="n-in" id="kMeb" type="number" inputmode="decimal" step="0.01"></div><div class="n-f"><label for="kKont" data-i="Kontragent">Kontragent</label><input class="n-in" id="kKont" type="text"></div><div class="n-f"><label for="kOd" data-i="Ödəniş növü">Ödəniş növü</label><select class="n-in" id="kOd"><option value="nagd" data-i="Nağd">Nağd</option><option value="kart" data-i="Kart">Kart</option><option value="bank" data-i="Bank">Bank</option></select></div><div class="n-f"><label for="kQeyd" data-i="Qeyd">Qeyd</label><input class="n-in" id="kQeyd" type="text"></div><div class="n-f"><button class="n-btn" onclick="kassaGonder()" data-i="Göndər">Göndər</button></div></div></div>
+</div>
+
+<div class="screen" id="sHesab">
+  <div class="n-hd"><div style="display:flex;align-items:center;gap:10px"><button class="btn-geri" onclick="screenAc('sHome')">‹</button><div class="n-t" id="hesTitle">—</div></div></div>
+  <div class="n-body" style="overflow:auto"><div id="hesTar" style="display:none;gap:8px;margin-top:14px;align-items:flex-end"><div style="flex:1"><label class="n-lab2" data-i="Başlanğıc">Başlanğıc</label><input class="n-in" id="hesBas" type="date"></div><div style="flex:1"><label class="n-lab2" data-i="Son">Son</label><input class="n-in" id="hesSon" type="date"></div><button class="n-btn" style="width:auto;padding:0 14px" onclick="hesabatYukle()" data-i="Göstər">Göstər</button></div><div id="hesNet" style="margin-top:12px"></div></div>
+</div>
+
+<div class="screen" id="sJurnal">
+  <div class="n-hd"><div style="display:flex;align-items:center;gap:10px"><button class="btn-geri" onclick="screenAc('sHome')">‹</button><div><div class="n-t" data-i="📋 Sinxronizasiya jurnalı">📋 Sinxronizasiya jurnalı</div><div class="n-s" data-i="Son əməliyyatlar">Son əməliyyatlar</div></div></div></div>
+  <div class="n-body" style="overflow:auto"><div class="n-card" id="jurList" style="margin-top:14px"></div><button class="n-btn" onclick="jurTemizle()" data-i="Təmizlə">Təmizlə</button></div>
+</div>
+
+<div class="screen" id="sDiag">
+  <div class="n-hd"><div style="display:flex;align-items:center;gap:10px"><button class="btn-geri" onclick="screenAc('sHome')">‹</button><div><div class="n-t" data-i="🩺 Diaqnostika">🩺 Diaqnostika</div><div class="n-s" data-i="Cihaz və bağlantı">Cihaz və bağlantı</div></div></div></div>
+  <div class="n-body" style="overflow:auto"><div class="n-card" id="diagList" style="margin-top:14px"></div></div>
+</div>
+
+<div class="screen" id="sWizard">
+  <div class="n-hd"><div style="display:flex;align-items:center;gap:10px"><div><div class="n-t" data-i="Xoş gəlmisiniz">Xoş gəlmisiniz</div><div class="n-s" data-i="İlk quraşdırma">İlk quraşdırma</div></div></div></div>
+  <div class="n-body" style="overflow:auto;padding-bottom:40px"><div class="n-lbl" data-i="Dil">Dil</div><div class="n-seg"><button type="button" data-k="dil" data-v="az" onclick="secim('dil','az')">AZ</button><button type="button" data-k="dil" data-v="ru" onclick="secim('dil','ru')">RU</button><button type="button" data-k="dil" data-v="tr" onclick="secim('dil','tr')">TR</button><button type="button" data-k="dil" data-v="en" onclick="secim('dil','en')">EN</button></div><div class="n-lbl" data-i="Bağlantı">Bağlantı</div><div class="n-card"><div class="n-f"><label for="wSrv" data-i="Server ünvanı">Server ünvanı</label><input class="n-in" id="wSrv" type="text" placeholder="192.168.1.150" oninput="" autocomplete="off"></div><div class="n-f"><label for="wBaza" data-i="Baza adı">Baza adı</label><input class="n-in" id="wBaza" type="text" placeholder="barkodprodatabase" oninput="" autocomplete="off"></div><div class="n-f"><label for="wServis" data-i="HTTP servis adı">HTTP servis adı</label><input class="n-in" id="wServis" type="text" placeholder="terminal" oninput="" autocomplete="off"></div><div class="n-f"><label for="wTerm" data-i="Terminal adı">Terminal adı</label><input class="n-in" id="wTerm" type="text" placeholder="T1" oninput="" autocomplete="off"></div><div class="n-f"><label for="wAcar" data-i="Giriş açarı">Giriş açarı</label><input class="n-in" id="wAcar" type="password" placeholder="boş burax" oninput="" autocomplete="off"></div><div class="n-f" style="display:flex;flex-direction:column;gap:8px"><button class="n-btn" onclick="kamAc('qr')" data-i="📷 QR ilə doldur">📷 QR ilə doldur</button><button class="n-btn" onclick="wizSaxla()" data-i="Yoxla və başla">Yoxla və başla</button></div></div></div>
 </div>
 
 <!-- ══ MODALLAR ══ -->
@@ -644,6 +666,7 @@ body{font-family:var(--font);background:#f0f4f8;min-height:100vh;overflow-x:hidd
 </div>
 
 </div><!-- /app -->
+<div id="pinBox" style="display:none;position:fixed;inset:0;z-index:10000;background:#0f172a;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff"><div style="font-size:18px;font-weight:800" data-i="PIN kodunu daxil edin">PIN kodunu daxil edin</div><input id="pinInp" type="password" inputmode="numeric" maxlength="4" oninput="pinYoxla()" style="width:160px;text-align:center;font-size:28px;letter-spacing:8px;padding:10px;border-radius:12px;border:0"><div id="pinErr" style="color:#f87171;font-weight:600;min-height:20px"></div></div>
 <div id="kamBox" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;flex-direction:column">
   <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#111;color:#fff;font:700 14px sans-serif">
     <span>📷 Kamera ilə barkod</span>
@@ -712,9 +735,12 @@ function mallarHtml(a){if(!a||!a.length)return '';var h='<div style="font-size:1
 var _ac;
 function beep(ok){try{if(navigator.vibrate)navigator.vibrate(ok?40:[80,60,80]);var A=window.AudioContext||window.webkitAudioContext;if(!A)return;_ac=_ac||new A();var o=_ac.createOscillator(),g=_ac.createGain();o.frequency.value=ok?1400:300;g.gain.value=.08;o.connect(g);g.connect(_ac.destination);o.start();o.stop(_ac.currentTime+(ok?.08:.25))}catch(e){}}
 
-var CFG=Object.assign({apiUrl:'http://localhost/baza/hs/v2',apiUser:'',apiPass:'',anbarAd:'Anbar-1'},lj('anbar_cfg',{}));
+var CFG=Object.assign({apiUrl:'http://192.168.0.0/Baza adı/hs/Http servis',apiUser:'',apiPass:'',anbarAd:'Anbar-1'},lj('anbar_cfg',{}));
 
 CFG.mode=CFG.mode||'online';
+function apiBuild(){CFG.apiUrl=(CFG.sxema||'http')+'://'+CFG.srv+'/'+CFG.baza+'/hs/'+CFG.servis}
+(function(){if(!CFG.srv){var m=/^(https?):\/\/([^\/]+)\/([^\/]+)\/hs\/([^\/?#]+)/.exec(CFG.apiUrl||'');if(m){CFG.sxema=m[1];CFG.srv=m[2];CFG.baza=m[3];CFG.servis=m[4]}else{CFG.sxema='http';CFG.srv='192.168.1.100';CFG.baza='baza';CFG.servis='terminal'}}
+CFG.termAd=CFG.termAd||'T1';CFG.fayl=!!CFG.fayl;apiBuild()})();
 function getUrl(ep){return CFG.apiUrl+ep}
 function ah(){var h={'Content-Type':'application/json'};if(CFG.apiUser)h['Authorization']='Basic '+btoa(CFG.apiUser+':'+CFG.apiPass);return h}
 async function aGet(ep){if(CFG.mode==='offline')return null;try{var r=await fetch(getUrl(ep),{headers:ah(),signal:AbortSignal.timeout(8000)});if(!r.ok)return null;return await r.json()}catch(e){return null}}
@@ -735,10 +761,11 @@ async function aGetX(ep,ms){
 async function aPost(ep,body){
   if(CFG.mode==='offline'){var e0=new Error('Oflayn rejim');e0.net=true;throw e0;}
   var r;
-  try{r=await fetch(getUrl(ep),{method:'POST',headers:ah(),body:JSON.stringify(body),signal:AbortSignal.timeout(45000)});}
+  try{r=await fetch(getUrl(ep),{method:'POST',headers:await ahP(ep,body),body:JSON.stringify(body),signal:AbortSignal.timeout(45000)});}
   catch(e){var er=new Error(e&&e.name==='TimeoutError'?'Server gec cavab verdi':'Bağlantı yoxdur');er.net=true;throw er;}
   var txt=await r.text(),j=null;
   try{j=JSON.parse(txt);}catch(e){}
+  if(r.ok&&(!j||typeof j!=='object')){var er2=new Error('Server cavabı tanınmadı (1C deyil?)');er2.net=true;throw er2;}
   if(!r.ok||(j&&j.ok===false))throw new Error((j&&j.error)||('HTTP '+r.status));
   return j||{};
 }
@@ -747,7 +774,11 @@ var MK='anbar_mallar',GRK='anbar_qruplar',KTK='anbar_kontragent',QHK='anbar_qaim
 var OPS={
   qebul:{title:'Mal Qəbulu',sk:'anbar_qebul',tc:'qebul-bg',sc:'qebul-bg',yeni:true,ep:'/terminal'},
   qaytarma:{title:'Mal Qaytarma',sk:'anbar_qaytarma',tc:'qaytarma-bg',sc:'qaytarma-bg',yeni:false,ep:'/terminal'},
-  sayim:{title:'Mal Sayımı',sk:'anbar_sayim',tc:'sayim-bg',sc:'sayim-bg',yeni:false,ep:'/terminal'}
+  sayim:{title:'Mal Sayımı',sk:'anbar_sayim',tc:'sayim-bg',sc:'sayim-bg',yeni:false,ep:'/terminal'},
+  silinme:{title:'Mal Silinməsi',sk:'anbar_silinme',tc:'qaytarma-bg',sc:'qaytarma-bg',yeni:false,ep:'/terminal'},
+  satis:{title:'Mal Satışı',sk:'anbar_satis',tc:'qebul-bg',sc:'qebul-bg',yeni:false,ep:'/terminal'},
+  kassa_medaxil:{title:'Kassa mədaxil',ep:'/terminal'},
+  kassa_mexaric:{title:'Kassa məxaric',ep:'/terminal'}
 };
  
 // ══════════════════════════════════════
@@ -1037,7 +1068,7 @@ function scanEt(v){
   var eb=document.getElementById('elBarkod');if(eb)eb.value='';
   updBS(v,'');setTimeout(function(){updBS('','');},2000);
   var inS=siyahi.find(function(s){return s.barkod===v;});
-  if(inS){beep(true);showUpdate(inS);return;}
+  if(inS){dubl(inS);return;}
   var m=mallar.find(function(x){return x.barkod===v;})||mallar.find(function(x){return x.code&&x.code===v;});
   if(m){beep(true);curMal=m;showFound(m);}
   else{beep(false);curMal=null;if(OPS[curOp].yeni)showNew(v);else showNFW(v);}
@@ -1411,6 +1442,7 @@ function mkPayload(d){
     siyahi:(d.siyahi||[]).map(function(s){return{barkod:cl(s.barkod),ad:cl(s.ad),say:s.say,alis:Math.round((s.alis||0)*10000)/10000,satis:Math.round((s.satis||0)*10000)/10000,yeni:!!s.yeni,code:cl(s.code)};}),
     clientId:String(d.id),tarixYaz:new Date().toISOString()};
   if(d.editNo)p.no=d.editNo;
+  if(d.mebleg!=null){p.mebleg=d.mebleg;p.odenis=d.odenis||'nagd'}
   return p;
 }
 function draftSil(id){if(id)sj('anbar_drafts',lj('anbar_drafts',[]).filter(function(d){return d.id!==id;}));}
@@ -1440,7 +1472,7 @@ async function gonder(){
   var doc=JSON.parse(JSON.stringify(docCur()));
   saxla();sending=true;toast('Göndərilir...','info');
   try{
-    var res=await aPost(doc.editNo?'/update':OPS[doc.op].ep,mkPayload(doc));
+    var res=await tPost(doc.editNo?'/update':OPS[doc.op].ep,mkPayload(doc));
     sending=false;bitdi(doc,res&&res.no?res.no:'');cixis();
   }catch(e){
     sending=false;
@@ -1454,7 +1486,7 @@ async function outboxGonder(){
   sending=true;var ok=0;
   for(var i=0;i<q.length;i++){
     var d=q[i];
-    try{var r=await aPost(d.editNo?'/update':OPS[d.op].ep,mkPayload(d));bitdi(d,r&&r.no?r.no:'');ok++;}
+    try{var r=await tPost(d.editNo?'/update':OPS[d.op].ep,mkPayload(d));bitdi(d,r&&r.no?r.no:'');ok++;}
     catch(e){if(e.net)break;d.err=e.message;sj('anbar_outbox',lj('anbar_outbox',[]).map(function(x){return x.id===d.id?d:x;}));}
   }
   sending=false;homePend();
@@ -1538,7 +1570,7 @@ async function tarixDraftGonder(h){
   if(sending)return;
   sending=true;toast('Göndərilir...','info');
   try{
-    var r=await aPost(h.editNo?'/update':'/terminal',mkPayload(h));
+    var r=await tPost(h.editNo?'/update':'/terminal',mkPayload(h));
     sending=false;bitdi(h,r&&r.no?r.no:'');tarixYukle();
   }catch(e){sending=false;toast('Xəta: '+e.message,'err');}
 }
@@ -1710,15 +1742,15 @@ function modDeyis(){CFG.mode=CFG.mode==='offline'?'online':'offline';sj('anbar_c
 
 // ── Kamera skaneri ──
 var _kam=null,_fen=false;
-async function kamAc(){
-  if(!curOp){toast('Əvvəl əməliyyat seçin','warn');return;}
+async function kamAc(mod){
+  if(!curOp&&mod!=='qr'){toast('Əvvəl əməliyyat seçin','warn');return;}
   if(!window.Html5Qrcode){toast('Kamera modulu yüklənməyib','err');return;}
   document.getElementById('kamBox').style.display='flex';_fen=false;
   try{
     var H=Html5QrcodeSupportedFormats;
     _kam=new Html5Qrcode('kamReader',{formatsToSupport:[H.EAN_13,H.EAN_8,H.CODE_128,H.CODE_39,H.UPC_A,H.UPC_E,H.QR_CODE],verbose:false,useBarCodeDetectorIfSupported:true});
     await _kam.start({facingMode:'environment'},{fps:10,qrbox:function(w,h){var s=Math.min(w,h);return{width:Math.floor(s*.85),height:Math.floor(s*.45)}}},
-      function(txt){var v=String(txt).trim();kamBagla().then(function(){scanEt(v)})},function(){});
+      function(txt){var v=String(txt).trim();kamBagla().then(function(){if(mod==='qr')qrKurulum(v);else scanEt(v)})},function(){});
   }catch(e){toast('Kamera açılmadı: '+(e&&e.message?e.message:e),'err');kamBagla();}
 }
 async function kamBagla(){
@@ -1736,6 +1768,7 @@ function geriBas(){
   for(var i=0;i<ms.length;i++){if(getComputedStyle(ms[i]).display!=='none'){modalBagla(ms[i].id);return;}}
   var sc=document.querySelector('.screen.active'),id=sc?sc.id:'sHome';
   if(id==='sOp'){geriQayt();return;}
+  if(id==='sWizard')return;
   if(id!=='sHome'){screenAc('sHome');return;}
   var n=Date.now(),A=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;
   if(n-_bkT<2000){if(A&&A.exitApp)A.exitApp();return;}
@@ -1743,7 +1776,157 @@ function geriBas(){
 }
 (function(){var A=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;if(A&&A.addListener)A.addListener('backButton',geriBas);})();
 
-restoreBackup().then(function(){modUI();init()},function(){modUI();init()});
+
+// ════ v3: ayarlar, baglanti, fayl rejimi ════
+function paramDoldur(){function sv(i,v){var e=document.getElementById(i);if(e)e.value=v||''}
+  sv('cfgSrv',CFG.srv);sv('cfgBaza',CFG.baza);sv('cfgServis',CFG.servis);sv('cfgTerm',CFG.termAd);sv('cfgUser',CFG.apiUser);sv('cfgPass',CFG.apiPass);sv('cfgAnbar',CFG.anbarAd);
+  var w=document.getElementById('cfgFayl');if(w){w.className='n-sw'+(CFG.fayl?' on':'');w.setAttribute('aria-checked',CFG.fayl?'true':'false')}
+  urlGor();var pr=document.getElementById('pingRes');if(pr)pr.textContent=''}
+function urlGor(){var e=document.getElementById('cfgUrlGor');if(e)e.textContent=CFG.apiUrl}
+function cfgSaxla(){function gv(i){var e=document.getElementById(i);return e?e.value.trim():''}
+  var raw=gv('cfgSrv'),m=/^(https?):\/\/([^\/]+)\/([^\/]+)\/hs\/([^\/?#]+)/.exec(raw);
+  if(m){CFG.sxema=m[1];CFG.srv=m[2];CFG.baza=m[3];CFG.servis=m[4]}
+  else{CFG.srv=raw.replace(/^https?:\/\//,'').replace(/\/.*$/,'')||CFG.srv;CFG.baza=gv('cfgBaza').replace(/\//g,'');CFG.servis=gv('cfgServis').replace(/\//g,'')||'terminal'}
+  CFG.termAd=gv('cfgTerm')||'T1';CFG.apiUser=gv('cfgUser');CFG.apiPass=gv('cfgPass');CFG.anbarAd=gv('cfgAnbar')||'Anbar-1';
+  apiBuild();sj('anbar_cfg',CFG);urlGor()}
+function faylDeyis(){CFG.fayl=!CFG.fayl;sj('anbar_cfg',CFG);paramDoldur();toast(CFG.fayl?'Fayl rejimi aktivdir':'Fayl rejimi söndürüldü','info')}
+
+var _dur='?';
+function durumUI(){var p=document.getElementById('durPill');if(!p)return;
+  var T={ok:['ok','Online'],auth:['warn','Giriş səhvdir'],err:['bad','Server xətası'],net:['bad','Server cavab vermir'],off:['','Oflayn rejim']}[_dur]||['','Yoxlanılır'];
+  p.className='n-pill '+T[0];p.querySelector('span').textContent=T[1]}
+async function durumYoxla(goster){var res;
+  if(CFG.mode==='offline')res='off';
+  else{try{var r=await fetch(CFG.apiUrl+'/ping',{headers:ah(),signal:AbortSignal.timeout(6000)});
+    res=!r.status?'net':(r.status===401||r.status===403)?'auth':(r.status<500?'ok':'err')}catch(e){res='net'}}
+  if(_dur!==res)jurnal('info',CFG.srv+': '+res);_dur=res;durumUI();
+  if(goster===true){var el=document.getElementById('pingRes');if(el){var M={ok:['Bağlantı uğurludur','g2'],auth:['İstifadəçi və ya parol səhvdir','r2'],err:['Server xəta verdi','r2'],net:['Server cavab vermir. Ünvanı və şəbəkəni yoxlayın','r2'],off:['Oflayn rejimdir','a1']}[res];el.style.color='var(--'+M[1]+')';el.textContent=t(M[0])}}
+  if(res==='ok'){if(lj('anbar_outbox',[]).length)outboxGonder();faylGozleyen()}
+  return res}
+var pingEt=function(){return durumYoxla(true)};
+var _hp0=homePend;homePend=function(){_hp0();homeStat()};
+function homeStat(){var a=document.getElementById('stGoz'),b=document.getElementById('stMal');if(a)a.textContent=lj('anbar_outbox',[]).length;if(b)b.textContent=(mallar||[]).length}
+var _md0=modDeyis;modDeyis=function(){_md0();durumYoxla()};
+
+// fayl yazma/oxuma (Capacitor); sira: Documents, Android/data, app daxili
+var DIRS=['DOCUMENTS','EXTERNAL','DATA'];
+async function fsYaz(p,data){var F=capFS();for(var i=0;i<DIRS.length;i++){try{await F.writeFile({path:p,data:data,directory:DIRS[i],encoding:'utf8',recursive:true});return DIRS[i]}catch(e){}}throw new Error('fs')}
+async function fsOxu(p){var F=capFS();if(!F)return null;for(var i=0;i<DIRS.length;i++){try{var r=await F.readFile({path:p,directory:DIRS[i],encoding:'utf8'});return r.data}catch(e){}}return null}
+async function faylYaz(ad,data,yol){var p=(yol||'BarkodPRO/Terminal1CFilesBarkodPRO/')+ad;
+  if(capFS())return await fsYaz(p,data);
+  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type:'application/json'}));a.download=ad;document.body.appendChild(a);a.click();a.remove();return 'brauzer'}
+function fileYaz(){clearTimeout(_fyT);_fyT=setTimeout(function(){if(capFS())fsYaz('BarkodPRO/anbar_ehtiyat.json',ehtiyatData()).catch(function(){})},1500)}
+function ehtiyatFayl(){faylYaz('anbar_ehtiyat.json',ehtiyatData(),'BarkodPRO/').then(function(d){toast(d==='brauzer'?'Ehtiyat fayl yükləndi':'Ehtiyat fayl yazıldı ('+d+')','ok')}).catch(function(){toast('Fayl yazıla bilmədi','err')})}
+function faylAdi(b){var t=String(b.tarixYaz||new Date().toISOString()).replace(/[-:]/g,'').replace('T','-').slice(0,15);
+  return (CFG.termAd+'_'+b.emeliyyat+'_'+t+'_'+String(b.clientId).slice(-4)+'.json').replace(/[^\w\-.]/g,'')}
+async function tPost(ep,body){
+  if(!CFG.fayl)return aPost(ep,body);
+  var ad=faylAdi(body),obj={v:1,terminal:CFG.termAd,ep:ep,fayl:ad,sened:body},yoxEp=false;
+  if(CFG.mode!=='offline'){try{await aPost('/fayl',{ad:ad,mezmun:obj});return{ok:true,no:'fayl'}}catch(e){if(e.net){}else if(/404/.test(e.message))yoxEp=true;else throw e}}
+  await faylYaz(ad,JSON.stringify(obj,null,1));
+  if(!yoxEp){var g=lj('anbar_fayl_gozleyen',[]);g.push({ad:ad,mezmun:obj});sj('anbar_fayl_gozleyen',g)}
+  return{ok:true,no:'fayl (cihazda)'}}
+async function faylGozleyen(){var g=lj('anbar_fayl_gozleyen',[]);if(!g.length||CFG.mode==='offline'||!CFG.fayl)return;var kal=[];
+  for(var i=0;i<g.length;i++){try{await aPost('/fayl',{ad:g[i].ad,mezmun:g[i].mezmun})}catch(e){if(e.net){kal=kal.concat(g.slice(i));break}if(!/404/.test(e.message))kal.push(g[i])}}
+  sj('anbar_fayl_gozleyen',kal)}
+
+// mal faylı (CSV: barkod;ad;alis_qiymeti;satis_qiymeti;qaliq;kod;qrup)
+function csvMal(txt){txt=txt.replace(/^\uFEFF/,'');var L=txt.split(/\r?\n/).filter(function(x){return x.trim()});if(!L.length)return[];
+  var sp=L[0].indexOf(';')>=0?';':(L[0].indexOf('\t')>=0?'\t':',');var H=L[0].toLowerCase().split(sp).map(function(x){return x.trim()}),has=H.indexOf('barkod')>=0;
+  function ix(){for(var i=0;i<arguments.length;i++){var k=H.indexOf(arguments[i]);if(k>=0)return k}return -1}
+  var c=has?{b:ix('barkod'),a:ix('ad'),al:ix('alis_qiymeti','alis'),s:ix('satis_qiymeti','satis'),q:ix('qaliq'),k:ix('kod','code'),g:ix('qrup')}:{b:0,a:1,al:2,s:3,q:4,k:5,g:6};
+  return (has?L.slice(1):L).map(function(l){var p=l.split(sp);function g(i){return i>=0&&i<p.length?p[i].trim():''}function n(i){return parseFloat(g(i).replace(',','.'))||0}
+    return{barkod:g(c.b),ad:g(c.a),alis:n(c.al),satis:n(c.s),qaliq:n(c.q),code:g(c.k),unit:'',qrup:g(c.g)}}).filter(function(m){return m.barkod||m.ad})}
+function malTetbiq(arr,src){if(!arr.length){toast('Faylda mal tapılmadı','warn');return}
+  mallar=arr;sj(MK,mallar);try{localStorage.setItem('anbar_mallar_ts',Date.now())}catch(e){}
+  var qs={};mallar.forEach(function(m){if(m.qrup)qs[m.qrup]=(qs[m.qrup]||0)+1});qruplar=Object.keys(qs).map(function(k){return{ad:k,say:qs[k]}});sj(GRK,qruplar);
+  setST(mallar.length+' mal (fayl)');homeStat();toast(mallar.length+' mal faylından yükləndi ('+src+')','ok')}
+async function malFaylYukle(){var t=await fsOxu('BarkodPRO/Terminal1CFilesBarkodPRO/mallar.csv');if(t){malTetbiq(csvMal(t),'mallar.csv');return}document.getElementById('malFayl').click()}
+function malFaylSec(i){var f=i.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){malTetbiq(csvMal(String(rd.result)),f.name)};rd.readAsText(f,'utf-8');i.value=''}
+
+// ayarlar: fayla saxla / geri yukle (parol yazilmir)
+async function ayarSaxla(){var o=Object.assign({},CFG);delete o.apiPass;
+  try{var d=await faylYaz('ayarlar.json',JSON.stringify({v:1,ayar:o},null,1),'BarkodPRO/');toast(d==='brauzer'?'Ayarlar faylı yükləndi':'Ayarlar saxlandı ('+d+')','ok')}catch(e){toast('Fayl yazıla bilmədi','err')}}
+function ayarApply(t){try{var j=JSON.parse(t),a=j.ayar||j,ps=CFG.apiPass;Object.assign(CFG,a);if(!a.apiPass)CFG.apiPass=ps;apiBuild();sj('anbar_cfg',CFG);paramDoldur();durumYoxla();toast('Ayarlar bərpa olundu. Parolu yenidən yazın','ok')}catch(e){toast('Fayl oxunmadı','err')}}
+async function ayarYukle(){var t=await fsOxu('BarkodPRO/ayarlar.json');if(t){ayarApply(t);return}document.getElementById('ayarFayl').click()}
+function ayarSec(i){var f=i.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){ayarApply(String(rd.result))};rd.readAsText(f);i.value=''}
+
+
+// ════ v3.2: dillər, açar, ödənişlər, hesabatlar, cihaz, jurnal ════
+var APPV='3.2',LNG='az',D={"Gözləyən sənəd": ["Ожидают отправки", "Bekleyen belge", "Pending documents"], "Bu gün sənəd": ["Документов сегодня", "Bugün belge", "Documents today"], "Mal sayı": ["Товаров", "Ürün sayısı", "Items"], "Anbar əməliyyatları": ["Складские операции", "Depo işlemleri", "Warehouse operations"], "Mal qəbulu": ["Приёмка товара", "Mal kabulü", "Goods receipt"], "Təchizatçıdan daxil olan": ["Поступление от поставщика", "Tedarikçiden gelen", "Incoming from supplier"], "Mal qaytarma": ["Возврат товара", "Mal iadesi", "Goods return"], "Təchizatçıya qaytarılan": ["Возврат поставщику", "Tedarikçiye iade", "Returned to supplier"], "Mal sayımı": ["Инвентаризация", "Mal sayımı", "Stock count"], "Qrup üzrə inventarizasiya": ["По группам", "Gruba göre sayım", "Count by group"], "Mal silinməsi": ["Списание товара", "Mal silme", "Write-off"], "Zədəli, vaxtı keçmiş": ["Брак, просрочка", "Hasarlı, süresi geçmiş", "Damaged, expired"], "Mal satışı": ["Продажа товара", "Mal satışı", "Goods sale"], "Qiymət və qalıq ilə": ["С ценой и остатком", "Fiyat ve stok ile", "With price and stock"], "Qaimə tarixçəsi": ["История накладных", "Fatura geçmişi", "Document history"], "Əvvəlki əməliyyatlar": ["Прошлые операции", "Önceki işlemler", "Previous operations"], "Ödənişlər": ["Платежи", "Ödemeler", "Payments"], "Kassa mədaxil": ["Приход в кассу", "Kasa girişi", "Cash in"], "Daxil olan pul": ["Поступившие деньги", "Giren para", "Money received"], "Kassa məxaric": ["Расход из кассы", "Kasa çıkışı", "Cash out"], "Çıxan pul": ["Выданные деньги", "Çıkan para", "Money paid out"], "Hesabatlar": ["Отчёты", "Raporlar", "Reports"], "Anbar qalığı": ["Остатки на складе", "Depo stoğu", "Stock balance"], "Kontragent borcları": ["Долги контрагентов", "Cari borçlar", "Counterparty debts"], "Satış hesabatı": ["Отчёт по продажам", "Satış raporu", "Sales report"], "Kassa hesabatı": ["Кассовый отчёт", "Kasa raporu", "Cash report"], "Rejim və mal bazası": ["Режим и база товаров", "Mod ve ürün tabanı", "Mode and product base"], "🔄 Mal bazasını 1C-dən yüklə": ["🔄 Загрузить базу из 1С", "🔄 Ürün tabanını 1C'den yükle", "🔄 Load products from 1C"], "📄 Mal faylından yüklə (CSV)": ["📄 Загрузить из файла (CSV)", "📄 Dosyadan yükle (CSV)", "📄 Load from file (CSV)"], "Digər": ["Прочее", "Diğer", "Other"], "⚙️ Ayarlar": ["⚙️ Настройки", "⚙️ Ayarlar", "⚙️ Settings"], "📋 Sinxronizasiya jurnalı": ["📋 Журнал синхронизации", "📋 Senkronizasyon günlüğü", "📋 Sync log"], "🩺 Diaqnostika": ["🩺 Диагностика", "🩺 Tanılama", "🩺 Diagnostics"], "ℹ️ Proqram haqqında": ["ℹ️ О программе", "ℹ️ Program hakkında", "ℹ️ About"], "🔒 Məxfilik siyasəti": ["🔒 Политика конфиденциальности", "🔒 Gizlilik politikası", "🔒 Privacy policy"], "Bütün hüquqlar Xəyal Şıxalıyev BarkodPRO-ya məxsusdur.": ["Все права принадлежат Хаялю Шыхалиеву, BarkodPRO.", "Tüm hakları Xəyal Şıxalıyev BarkodPRO'ya aittir.", "All rights belong to Xəyal Şıxalıyev, BarkodPRO."], "Online": ["Онлайн", "Çevrimiçi", "Online"], "Giriş səhvdir": ["Ошибка входа", "Giriş hatalı", "Login error"], "Server xətası": ["Ошибка сервера", "Sunucu hatası", "Server error"], "Server cavab vermir": ["Сервер не отвечает", "Sunucu yanıt vermiyor", "Server not responding"], "Oflayn rejim": ["Офлайн-режим", "Çevrimdışı mod", "Offline mode"], "Yoxlanılır": ["Проверка", "Kontrol ediliyor", "Checking"], "🟢 Rejim: ONLINE — 1C ilə işləyir (dəyiş)": ["🟢 Режим: ОНЛАЙН — работает с 1С (сменить)", "🟢 Mod: ÇEVRİMİÇİ — 1C ile çalışır (değiştir)", "🟢 Mode: ONLINE — works with 1C (change)"], "🔴 Rejim: OFLAYN — yaddaşa yazılır (dəyiş)": ["🔴 Режим: ОФЛАЙН — сохраняется в памяти (сменить)", "🔴 Mod: ÇEVRİMDIŞI — belleğe yazılır (değiştir)", "🔴 Mode: OFFLINE — saved to memory (change)"], "Bağlantı uğurludur": ["Связь установлена", "Bağlantı başarılı", "Connection OK"], "İstifadəçi və ya parol səhvdir": ["Неверный пользователь или пароль", "Kullanıcı veya parola hatalı", "Wrong user or password"], "Server xəta verdi": ["Сервер вернул ошибку", "Sunucu hata verdi", "Server returned an error"], "Server cavab vermir. Ünvanı və şəbəkəni yoxlayın": ["Сервер не отвечает. Проверьте адрес и сеть", "Sunucu yanıt vermiyor. Adresi ve ağı kontrol edin", "Server not responding. Check address and network"], "Oflayn rejimdir": ["Офлайн-режим", "Çevrimdışı moddasınız", "Offline mode"], "Ayarlar": ["Настройки", "Ayarlar", "Settings"], "Bağlantı, fayl və ehtiyat": ["Связь, файлы, резерв", "Bağlantı, dosya, yedek", "Connection, files, backup"], "Bağlantı": ["Подключение", "Bağlantı", "Connection"], "Server ünvanı": ["Адрес сервера", "Sunucu adresi", "Server address"], "Baza adı": ["Имя базы", "Veritabanı adı", "Database name"], "HTTP servis adı": ["Имя HTTP-сервиса", "HTTP servis adı", "HTTP service name"], "1C istifadəçi adı": ["Пользователь 1С", "1C kullanıcı adı", "1C username"], "1C parol": ["Пароль 1С", "1C parolası", "1C password"], "🔌 Bağlantını yoxla": ["🔌 Проверить связь", "🔌 Bağlantıyı kontrol et", "🔌 Test connection"], "Giriş açarı": ["Ключ доступа", "Erişim anahtarı", "Access key"], "Ödənişlər və hesabatlar yalnız açar daxil ediləndə görünür": ["Платежи и отчёты видны только при вводе ключа", "Ödemeler ve raporlar anahtar girilince görünür", "Payments and reports appear only with a key"], "Terminal": ["Терминал", "Terminal", "Terminal"], "Terminal adı": ["Имя терминала", "Terminal adı", "Terminal name"], "Anbar adı (1C-yə göndəriləcək)": ["Склад (передаётся в 1С)", "Depo adı (1C'ye gönderilir)", "Warehouse name (sent to 1C)"], "📷 QR ilə doldur": ["📷 Заполнить по QR", "📷 QR ile doldur", "📷 Fill from QR"], "Dil": ["Язык", "Dil", "Language"], "Cihaz": ["Устройство", "Cihaz", "Device"], "Ekran sönməsin": ["Не гасить экран", "Ekran kapanmasın", "Keep screen on"], "Batareya xəbərdarlığı": ["Предупреждение о батарее", "Pil uyarısı", "Battery warning"], "Avtomatik ehtiyat nüsxə": ["Автоматическая копия", "Otomatik yedek", "Automatic backup"], "Yan skan düyməsi": ["Боковая кнопка скана", "Yan tarama tuşu", "Side scan key"], "Düyməni öyrət": ["Назначить", "Tuşu öğret", "Assign"], "Eyni mal təkrar oxunanda": ["При повторном скане", "Aynı ürün tekrar okununca", "When the same item is rescanned"], "Sayı artır": ["Добавить кол-во", "Adedi artır", "Add quantity"], "Soruş": ["Спросить", "Sor", "Ask"], "Xəbərdarlıq": ["Предупредить", "Uyar", "Warn"], "PIN kod (4 rəqəm, boş = söndür)": ["PIN (4 цифры, пусто = выкл.)", "PIN (4 rakam, boş = kapalı)", "PIN (4 digits, empty = off)"], "Saxla": ["Сохранить", "Kaydet", "Save"], "Fayl rejimi": ["Файловый режим", "Dosya modu", "File mode"], "Sənədləri fayl kimi göndər": ["Отправлять документы файлами", "Belgeleri dosya olarak gönder", "Send documents as files"], "Fayllar": ["Файлы", "Dosyalar", "Files"], "📄 Mal faylını yüklə (CSV)": ["📄 Загрузить товары (CSV)", "📄 Ürün dosyasını yükle (CSV)", "📄 Load product file (CSV)"], "💾 Ayarları fayla saxla": ["💾 Сохранить настройки в файл", "💾 Ayarları dosyaya kaydet", "💾 Save settings to file"], "♻️ Ayarları geri yüklə": ["♻️ Восстановить настройки", "♻️ Ayarları geri yükle", "♻️ Restore settings"], "🗂 Ehtiyat fayl yarat (gözləyən sənədlər)": ["🗂 Создать резервный файл", "🗂 Yedek dosya oluştur", "🗂 Create backup file"], "Məbləğ": ["Сумма", "Tutar", "Amount"], "Kontragent": ["Контрагент", "Cari", "Counterparty"], "Ödəniş növü": ["Тип оплаты", "Ödeme türü", "Payment type"], "Nağd": ["Наличные", "Nakit", "Cash"], "Kart": ["Карта", "Kart", "Card"], "Bank": ["Банк", "Banka", "Bank"], "Qeyd": ["Примечание", "Not", "Note"], "Göndər": ["Отправить", "Gönder", "Send"], "Başlanğıc": ["С", "Başlangıç", "From"], "Son": ["По", "Bitiş", "To"], "Göstər": ["Показать", "Göster", "Show"], "Yüklənir...": ["Загрузка...", "Yükleniyor...", "Loading..."], "Məbləği yazın": ["Введите сумму", "Tutarı yazın", "Enter the amount"], "Şəbəkə yoxdur, yaddaşa yazıldı": ["Нет сети, сохранено в памяти", "Ağ yok, belleğe yazıldı", "No network, saved to memory"], "Giriş açarı yanlışdır": ["Неверный ключ доступа", "Erişim anahtarı hatalı", "Wrong access key"], "Jurnal boşdur": ["Журнал пуст", "Günlük boş", "Log is empty"], "Təmizlə": ["Очистить", "Temizle", "Clear"], "Son əməliyyatlar": ["Последние события", "Son işlemler", "Recent events"], "Cihaz və bağlantı": ["Устройство и связь", "Cihaz ve bağlantı", "Device and connection"], "Xoş gəlmisiniz": ["Добро пожаловать", "Hoş geldiniz", "Welcome"], "İlk quraşdırma": ["Первая настройка", "İlk kurulum", "First setup"], "Yoxla və başla": ["Проверить и начать", "Kontrol et ve başla", "Check and start"], "Server ünvanını yazın": ["Введите адрес сервера", "Sunucu adresini yazın", "Enter the server address"], "PIN kodunu daxil edin": ["Введите PIN-код", "PIN kodunu girin", "Enter PIN"], "PIN yanlışdır": ["Неверный PIN", "PIN hatalı", "Wrong PIN"], "PIN söndürüldü": ["PIN отключён", "PIN kapatıldı", "PIN disabled"], "PIN 4 rəqəm olmalıdır": ["PIN — 4 цифры", "PIN 4 rakam olmalı", "PIN must be 4 digits"], "PIN təyin olundu": ["PIN установлен", "PIN ayarlandı", "PIN set"], "Batareya zəifdir": ["Низкий заряд", "Pil zayıf", "Battery low"], "Skan düyməsinə basın": ["Нажмите кнопку скана", "Tarama tuşuna basın", "Press the scan key"], "Düymə yadda saxlandı": ["Кнопка сохранена", "Tuş kaydedildi", "Key saved"], "Bu mal artıq siyahıdadır": ["Товар уже в списке", "Bu ürün zaten listede", "Item is already in the list"]};
+function t(x){var d=D[x];if(!d||LNG==='az')return x;return d[{ru:0,tr:1,en:2}[LNG]]||x}
+function trApply(){document.querySelectorAll('[data-i]').forEach(function(e){if(!e._az)e._az=e.getAttribute('data-i');e.textContent=t(e._az)})}
+function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function jurnal(k,m){var j=lj('anbar_jurnal',[]);j.unshift({t:new Date().toISOString(),k:k,m:m});sj('anbar_jurnal',j.slice(0,150))}
+var _tp0=tPost;tPost=async function(ep,body){try{var r=await _tp0(ep,body);jurnal('ok',(body.emeliyyat||'')+' → '+((r&&r.no)||'OK'));return r}catch(e){jurnal(e.net?'wait':'err',(body.emeliyyat||'')+': '+e.message);throw e}};
+function durumUI(){var p=document.getElementById('durPill');if(!p)return;var T={ok:['ok','Online'],auth:['warn','Giriş səhvdir'],err:['bad','Server xətası'],net:['bad','Server cavab vermir'],off:['','Oflayn rejim']}[_dur]||['','Yoxlanılır'];p.className='n-pill '+T[0];p.querySelector('span').textContent=t(T[1])}
+function modUI(){var b=document.getElementById('modBtn');if(!b)return;var off=CFG.mode==='offline';b.textContent=t(off?'🔴 Rejim: OFLAYN — yaddaşa yazılır (dəyiş)':'🟢 Rejim: ONLINE — 1C ilə işləyir (dəyiş)');b.style.cssText=off?'color:#b91c1c;border-color:#fca5a5;background:#fef2f2':'color:#15803d;border-color:#86efac;background:#f0fdf4'}
+function homeStat(){function s(i,v){var e=document.getElementById(i);if(e)e.textContent=v}var b=bugunStr();s('stGoz',lj('anbar_outbox',[]).length);s('stMal',(mallar||[]).length);s('stBug',lj(QHK,[]).filter(function(x){return x.tarix===b}).length)}
+function menuGor(){['secOd','secHes'].forEach(function(i){var e=document.getElementById(i);if(e)e.style.display=CFG.acar?'':'none'})}
+var _pd0=paramDoldur;paramDoldur=function(){_pd0();var a=document.getElementById('cfgAcar');if(a)a.value=CFG.acar||'';
+  ['ekran','bat','ehtiyat','fayl'].forEach(function(k){var w=document.getElementById('sw_'+k);if(w){w.className='n-sw'+(CFG[k]?' on':'');w.setAttribute('aria-checked',CFG[k]?'true':'false')}});
+  document.querySelectorAll('[data-k]').forEach(function(b){b.className=CFG[b.getAttribute('data-k')]===b.getAttribute('data-v')?'on':''})};
+var _cs0=cfgSaxla;cfgSaxla=function(){_cs0();var e=document.getElementById('cfgAcar');if(e){CFG.acar=e.value.trim();sj('anbar_cfg',CFG);menuGor()}};
+function tgl(k){CFG[k]=!CFG[k];sj('anbar_cfg',CFG);paramDoldur();if(k==='ekran')wakeTetbiq();if(k==='bat')batIzle()}
+function faylDeyis(){tgl('fayl')}
+function secim(k,v){CFG[k]=v;sj('anbar_cfg',CFG);if(k==='dil'){LNG=v;trApply();durumUI();modUI()}paramDoldur()}
+function dubl(x){var r=CFG.dubl||'sorus';
+  if(r==='artir'){x.say=(x.say||0)+1;beep(true);saxla();render();toast(x.ad+': '+x.say,'ok');return}
+  if(r==='xeber'){beep(false);if(navigator.vibrate)navigator.vibrate(200);toast(t('Bu mal artıq siyahıdadır'),'warn');return}
+  beep(true);showUpdate(x)}
+// giriş açarı: HMAC-SHA256(açar, vaxt+yol)
+async function imza(path){var v=String(Math.floor(Date.now()/1000)),te=new TextEncoder(),key=await crypto.subtle.importKey('raw',te.encode(CFG.acar),{name:'HMAC',hash:'SHA-256'},false,['sign']);
+  var sg=await crypto.subtle.sign('HMAC',key,te.encode(v+path));return{'X-Vaxt':v,'X-Imza':Array.from(new Uint8Array(sg)).map(function(b){return b.toString(16).padStart(2,'0')}).join('')}}
+async function ahP(ep,b){var h=ah();if(CFG.acar&&b&&b.mebleg!=null)Object.assign(h,await imza(ep));return h}
+// ödənişlər
+var _kop='';
+function kassaAc(op){_kop=op;document.querySelector('#sKassa .n-t').textContent=t(op==='kassa_medaxil'?'Kassa mədaxil':'Kassa məxaric');['kMeb','kKont','kQeyd'].forEach(function(i){document.getElementById(i).value=''});screenAc('sKassa')}
+async function kassaGonder(){var m=parseFloat(document.getElementById('kMeb').value.replace(',','.'));if(!(m>0)){toast(t('Məbləği yazın'),'warn');return}
+  var d={id:String(Date.now()),op:_kop,anbar:CFG.anbarAd,tarix:bugunStr(),kontragent:document.getElementById('kKont').value.trim(),qeyd:document.getElementById('kQeyd').value.trim(),mebleg:m,odenis:document.getElementById('kOd').value,siyahi:[]};
+  try{var r=await tPost('/terminal',mkPayload(d));bitdi(d,r&&r.no?r.no:'');screenAc('sHome')}
+  catch(e){if(e.net){outAdd(d);toast(t('Şəbəkə yoxdur, yaddaşa yazıldı'),'warn');screenAc('sHome')}else toast('1C: '+e.message,'err')}}
+// hesabatlar (1C cavabı: {kolonlar:[..],setirler:[[..]],cemi:".."})
+var _hes={tip:''};
+function hesabatAc(tip,ad){_hes={tip:tip};document.getElementById('hesTitle').textContent=t(ad);var d=(tip==='satis'||tip==='kassa'),iso=new Date().toISOString().slice(0,10);
+  document.getElementById('hesTar').style.display=d?'flex':'none';document.getElementById('hesBas').value=iso;document.getElementById('hesSon').value=iso;document.getElementById('hesNet').innerHTML='';screenAc('sHesab');if(!d)hesabatYukle()}
+function xt(m){return'<div class="n-card" style="padding:14px;color:#b91c1c;font-weight:600">'+esc(t(m))+'</div>'}
+async function hesabatYukle(){var el=document.getElementById('hesNet');el.innerHTML='<div class="n-foot">'+esc(t('Yüklənir...'))+'</div>';
+  var ep='/hesabat?tip='+_hes.tip+'&bas='+document.getElementById('hesBas').value+'&son='+document.getElementById('hesSon').value+'&anbar='+encodeURIComponent(CFG.anbarAd);
+  try{var h=Object.assign(ah(),await imza(ep)),r=await fetch(getUrl(ep),{headers:h,signal:AbortSignal.timeout(30000)});
+    if(r.status===401||r.status===403){el.innerHTML=xt('Giriş açarı yanlışdır');return}
+    var j=await r.json();if(j.error){el.innerHTML=xt('1C: '+j.error);return}
+    el.innerHTML='<div class="n-card" style="overflow:auto"><table class="n-tb"><tr>'+(j.kolonlar||[]).map(function(c){return'<th>'+esc(c)+'</th>'}).join('')+'</tr>'+(j.setirler||[]).map(function(r2){return'<tr>'+r2.map(function(c){return'<td>'+esc(c)+'</td>'}).join('')+'</tr>'}).join('')+'</table></div>'+(j.cemi?'<div style="margin-top:10px;font-weight:700;color:#0f172a">'+esc(j.cemi)+'</div>':'')}
+  catch(e){el.innerHTML=xt('Server cavab vermir')}}
+// jurnal + diaqnostika
+function jurnalGor(){var j=lj('anbar_jurnal',[]),C={ok:'#15803d',err:'#b91c1c',wait:'#b45309',info:'#475569'};
+  document.getElementById('jurList').innerHTML=j.length?j.map(function(x){return'<div class="n-row" style="display:block"><div style="font-size:11.5px;color:#64748b">'+esc(x.t.slice(0,19).replace('T',' '))+'</div><div style="font-size:13.5px;color:'+(C[x.k]||'#0f172a')+'">'+esc(x.m)+'</div></div>'}).join(''):'<div class="n-foot">'+esc(t('Jurnal boşdur'))+'</div>';screenAc('sJurnal')}
+function jurTemizle(){sj('anbar_jurnal',[]);jurnalGor()}
+function diagGor(){var ts=localStorage.getItem('anbar_mallar_ts'),kv=[['Versiya',APPV],['Server',CFG.apiUrl],['Status',_dur],['Terminal',CFG.termAd],['Anbar',CFG.anbarAd],['Rejim',CFG.mode],['Fayl rejimi',CFG.fayl?'açıq':'bağlı'],['Gözləyən sənəd',lj('anbar_outbox',[]).length],['Gözləyən fayl',lj('anbar_fayl_gozleyen',[]).length],['Mal sayı',(mallar||[]).length],['Son mal yeniləmə',ts?new Date(+ts).toLocaleString():'-'],['Fayl yazma',capFS()?'Capacitor':'brauzer'],['Giriş açarı',CFG.acar?'var':'yoxdur'],['Saat',new Date().toISOString().slice(0,19).replace('T',' ')]];
+  document.getElementById('diagList').innerHTML=kv.map(function(p){return'<div class="n-row" style="display:flex;gap:10px"><span style="color:#64748b;font-weight:600">'+esc(p[0])+'</span><span style="text-align:right;word-break:break-all">'+esc(p[1])+'</span></div>'}).join('');screenAc('sDiag')}
+// quraşdırma sehrbazı + QR
+function qrKurulum(x){try{var j=JSON.parse(x);if(j.srv)CFG.srv=String(j.srv).replace(/^https?:\/\//,'').replace(/\/.*$/,'');if(j.baza)CFG.baza=j.baza;if(j.servis)CFG.servis=j.servis;if(j.term)CFG.termAd=j.term;if(j.dil&&/^(az|ru|tr|en)$/.test(j.dil)){CFG.dil=j.dil;LNG=j.dil}if(j.acar)CFG.acar=j.acar;
+  apiBuild();sj('anbar_cfg',CFG);paramDoldur();menuGor();trApply();['wSrv','wBaza','wServis','wTerm','wAcar'].forEach(function(id,i){var e=document.getElementById(id);if(e)e.value=[CFG.srv,CFG.baza,CFG.servis,CFG.termAd,CFG.acar||''][i]});toast('QR OK','ok')}catch(e){toast('QR oxunmadı','err')}}
+function wizSaxla(){function g(i){return document.getElementById(i).value.trim()}var s0=g('wSrv');if(!s0){toast(t('Server ünvanını yazın'),'warn');return}
+  CFG.srv=s0.replace(/^https?:\/\//,'').replace(/\/.*$/,'');CFG.baza=g('wBaza').replace(/\//g,'');CFG.servis=g('wServis').replace(/\//g,'')||'terminal';CFG.termAd=g('wTerm')||'T1';CFG.acar=g('wAcar');CFG.hazir=true;
+  apiBuild();sj('anbar_cfg',CFG);menuGor();screenAc('sHome');durumYoxla()}
+// cihaz: ekran, batareya, yan düymə, ehtiyat, PIN
+var _wl=null;async function wakeTetbiq(){try{if(CFG.ekran&&navigator.wakeLock){_wl=await navigator.wakeLock.request('screen')}else if(_wl){_wl.release();_wl=null}}catch(e){}}
+var _bu=false;function batIzle(){if(!navigator.getBattery)return;navigator.getBattery().then(function(b){function k(){if(CFG.bat&&b.level<=0.2&&!b.charging){if(!_bu){_bu=true;toast(t('Batareya zəifdir')+': '+Math.round(b.level*100)+'%','warn');beep(false)}}else _bu=false}b.onlevelchange=k;b.onchargingchange=k;k()}).catch(function(){})}
+var _og=false;function yanOgren(){_og=true;toast(t('Skan düyməsinə basın'),'info')}
+document.addEventListener('keydown',function(e){if(_og){_og=false;CFG.yanKod=e.keyCode;sj('anbar_cfg',CFG);e.preventDefault();toast(t('Düymə yadda saxlandı')+': '+(e.key||e.keyCode),'ok');return}
+  if(CFG.yanKod&&e.keyCode===CFG.yanKod&&curOp&&document.getElementById('kamBox').style.display!=='flex'){e.preventDefault();kamAc()}},true);
+function ehtiyatDovr(){if(CFG.ehtiyat&&capFS())fsYaz('BarkodPRO/ehtiyat/anbar_'+new Date().toISOString().slice(0,10)+'.json',ehtiyatData()).catch(function(){})}
+async function sha(x){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('bp:'+x));return Array.from(new Uint8Array(b)).map(function(c){return c.toString(16).padStart(2,'0')}).join('')}
+function pinGoster(){if(!CFG.pinHash)return;document.getElementById('pinBox').style.display='flex';var i=document.getElementById('pinInp');i.value='';i.focus()}
+async function pinYoxla(){var i=document.getElementById('pinInp');if(i.value.length<4)return;if(await sha(i.value)===CFG.pinHash){document.getElementById('pinBox').style.display='none';document.getElementById('pinErr').textContent=''}else{i.value='';document.getElementById('pinErr').textContent=t('PIN yanlışdır')}}
+async function pinQur(){var v=document.getElementById('cfgPin').value.trim();if(!v){delete CFG.pinHash;sj('anbar_cfg',CFG);toast(t('PIN söndürüldü'),'info');return}if(!/^\d{4}$/.test(v)){toast(t('PIN 4 rəqəm olmalıdır'),'warn');return}CFG.pinHash=await sha(v);sj('anbar_cfg',CFG);document.getElementById('cfgPin').value='';toast(t('PIN təyin olundu'),'ok')}
+var _gz=0;document.addEventListener('visibilitychange',function(){if(document.hidden)_gz=Date.now();else{wakeTetbiq();if(CFG.pinHash&&Date.now()-_gz>300000)pinGoster()}});
+function basla(){var ilk=!CFG.hazir&&!localStorage.getItem('anbar_cfg');
+  if(CFG.ekran===undefined)CFG.ekran=true;if(CFG.bat===undefined)CFG.bat=true;if(CFG.ehtiyat===undefined)CFG.ehtiyat=true;CFG.dubl=CFG.dubl||'sorus';CFG.dil=CFG.dil||'az';LNG=CFG.dil;
+  modUI();init();homeStat();menuGor();trApply();durumYoxla();
+  setInterval(durumYoxla,20000);setInterval(homeStat,15000);setInterval(ehtiyatDovr,600000);window.addEventListener('online',durumYoxla);wakeTetbiq();batIzle();
+  if(ilk){paramDoldur();screenAc('sWizard')}else pinGoster()}
+restoreBackup().then(basla,basla);
 </script>
 </body>
 </html>
