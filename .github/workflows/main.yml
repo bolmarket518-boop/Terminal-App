@@ -1,4 +1,4 @@
-name: APK yigmaq Yeni
+name: APK yigmaq
 on:
   workflow_dispatch:
   push:
@@ -17,6 +17,8 @@ jobs:
           java-version: 17
       - run: npm install
       - run: npx cap add android
+      - name: Ikon ve splash (assets/ qovluğundakı şəkillərdən)
+        run: npx @capacitor/assets generate --android
       - name: Manifest duzelisleri (cleartext + kamera)
         run: |
           M=android/app/src/main/AndroidManifest.xml
@@ -29,5 +31,5 @@ jobs:
         run: ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
         with:
-          name: anbar-terminal-apk
+          name: Terminal BarkodPRO
           path: android/app/build/outputs/apk/debug/app-debug.apk
