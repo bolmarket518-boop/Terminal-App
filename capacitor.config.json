@@ -1,6 +1,6 @@
 {
-  "appId": "az.barkodpro.anbar",
-  "appName": "BarkodPRO Terminal",
+  "appId": "az.barkodpro.terminal",
+  "appName": "Terminal Online BarkodPRO",
   "webDir": "www",
   "server": {
     "androidScheme": "http",
